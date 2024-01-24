@@ -1,0 +1,17 @@
+.complexShape {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(#f1f5f9, #1e293b, #15803d, #1e293b);
+  border-radius: 50%;
+  animation: opacityChange 5s infinite;
+}
+
+@keyframes opacityChange {
+  0%,
+  100% {
+    opacity: 45%;
+  }
+  50% {
+    opacity: 20%;
+  }
+}
