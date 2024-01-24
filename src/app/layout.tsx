@@ -16,14 +16,20 @@ interface Metadata {
   description: string;
   authors: string;
   keywords: string[];
-  og: {
+  canonical: string;
+  openGraph: {
     title: string;
     description: string;
     image: string;
+    url: string;
+    type: string;
   };
   twitter: {
     card: string;
+    title: string;
     description: string;
+    site: string;
+    creator: string;
     images: string;
   };
 }
@@ -33,26 +39,48 @@ export const viewport: ViewPort = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL('http://localhost:3000'),
-  title: 'LMD Website',
-  description: 'Short introduction about myself and about my services',
+  metadataBase: new URL('https://www.lmdcode.dev'),
+  title: 'LMD Website - Full Stack Web Developer',
+  description:
+    'Short introduction about myself and about my services. Explore my professional journey and portfolio',
   authors: 'LMD',
 
   keywords: [
     'full-stack development',
     'web development',
-    'web-app development',
     'programming',
+    'frontend development',
+    'backend development',
+    'software engineering',
+    'JavaScript',
+    'React',
+    'Next.js',
+    'Node.js',
+    'Express.js',
+    'Koa.js',
+    'Tailwind CSS',
+    'GraphQL',
+    'MongoDB',
+    'MySQL',
+    'PostgreSQL',
   ],
-  og: {
+  canonical: 'https://www.lmdcode.dev',
+  openGraph: {
     title: 'LMD Website',
-    description: 'Short introduction about myself and about my services',
-    image: 'http://localhost:3000/LMDpic.jpg',
+    description:
+      'Explore the professional journey and portfolio of LMD, a full-stack web developer specializing in modern web technologies.',
+    image: 'https://www.lmdcode.dev/LMDpic.jpg',
+    url: 'https://www.lmdcode.dev',
+    type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    description: 'Short introduction about myself and about my services',
-    images: 'http://localhost:3000/LMDpic.jpg',
+    title: 'LMD Website - Full Stack Web Developer',
+    site: '@dn1el_lszl0',
+    creator: '@dn1el_lszl0',
+    description:
+      'Explore the professional journey and portfolio of LMD, a full-stack web developer specializing in modern web technologies.',
+    images: 'https://www.lmdcode.dev/LMDpic.jpg',
   },
 };
 

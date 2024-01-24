@@ -8,7 +8,6 @@ import {
   FaArrowRight,
   FaDiscord,
   FaGithub,
-  FaInstagram,
   FaLinkedinIn,
   FaMeta,
   FaTwitter,
@@ -40,12 +39,12 @@ export default function Home() {
     },
     {
       name: 'discord',
-      url: 'https://www.discord.com/lmd_dev/',
+      url: 'https://www.discord.com/channels/@dnl.m.lszlo',
       icon: <FaDiscord />,
     },
     {
       name: 'facebook',
-      url: 'https://www.facebook.com/lmd.dev/',
+      url: 'https://www.facebook.com/Daniel.m.Laszlo',
       icon: <FaMeta />,
     },
   ];

@@ -37,7 +37,9 @@ export default function Projects() {
   const { isDarkTheme } = useContext(DarkThemeContext);
   const [selectedStack, setSelectedStack] = useState('all');
 
-  const { data, error, loading } = useQuery(GET_PORTFOLIO_DATA, {});
+  const { data, error, loading } = useQuery(GET_PORTFOLIO_DATA, {
+    pollInterval: 100000,
+  });
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error : {error.message}</p>;
