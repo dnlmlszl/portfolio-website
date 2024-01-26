@@ -17,7 +17,7 @@ export default function About() {
   return (
     <main
       className={clsx(
-        'flex min-h-screen flex-col items-center justify-start p-2 md:p-4 lg:p-8 relative',
+        'flex min-h-screen flex-col items-center justify-start p-2 md:p-4 lg:p-8 relative mb-4',
         darkModeClasses
       )}
     >
@@ -62,7 +62,7 @@ export default function About() {
           </p>
           <Link
             href="/contact"
-            className="uppercase text-xs sm:text-base px-2 py-4 sm:px-8 sm:py-4 bg-orange-500 hover:bg-blue-400 text-slate-800 tracking-widest"
+            className="uppercase text-xs sm:text-base px-2 py-4 sm:px-8 sm:py-4 bg-orange-500 hover:bg-blue-400 text-slate-800 tracking-widest mb-4"
           >
             contact me for a chat
           </Link>
@@ -74,7 +74,7 @@ export default function About() {
             width={420}
             height={420}
             priority
-            className="rounded-md w-4/5 h-auto mt-[-2rem]"
+            className="rounded-md w-4/5 h-auto mt-[2rem]"
           />
         </div>
       </div>

@@ -29,7 +29,7 @@ export default function Navbar() {
                 className={clsx(
                   'text-base tracking-widest capitalize transition duration-200 linear',
                   {
-                    'text-blue-600 font-semibold border-b-2 border-blue-600':
+                    'text-blue-400 font-semibold border-b-2 border-blue-400':
                       pathname === `${path}`,
                   }
                 )}
@@ -38,6 +38,14 @@ export default function Navbar() {
               </Link>
             )
           )}
+          <Link
+            href="https://nextjs-blog-ts-opal.vercel.app"
+            className="text-base tracking-widest capitalize transition duration-200 linear"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Blog
+          </Link>
         </div>
         <div className="md:hidden">
           {/* Hamburger ikon */}

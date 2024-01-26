@@ -3,6 +3,7 @@ import { useContext, CSSProperties, FC } from 'react';
 import Link from 'next/link';
 import DarkThemeContext from '../store/ThemeContext';
 import PortfolioContext from '../store/PortfolioContext';
+import clsx from 'clsx';
 
 const useDarkTheme = () => {
   const { isDarkTheme } = useContext(DarkThemeContext);
@@ -37,12 +38,27 @@ export default function Sidebar() {
               key={index}
               href={path}
               onClick={toggleSidebarHandler}
-              className={`text-lg font-medium capitalize p-3 rounded-lg transition-all duration-300 ${linkHoverColor}`}
+              className={clsx(
+                'text-lg font-medium capitalize p-3 rounded-lg transition-all duration-300',
+                linkHoverColor
+              )}
             >
               {path.substring(1) || 'Home'}
             </Link>
           )
         )}
+        <Link
+          href="https://nextjs-blog-ts-opal.vercel.app"
+          onClick={toggleSidebarHandler}
+          className={clsx(
+            'text-lg font-medium capitalize p-3 rounded-lg transition-all duration-300',
+            linkHoverColor
+          )}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Blog
+        </Link>
       </div>
     </aside>
   );

@@ -10,7 +10,7 @@ import {
   FaGithub,
   FaLinkedinIn,
   FaMeta,
-  FaTwitter,
+  FaXTwitter,
 } from 'react-icons/fa6';
 import clsx from 'clsx';
 
@@ -35,7 +35,7 @@ export default function Home() {
     {
       name: 'twitter',
       url: 'https://twitter.com/dn1el_lszl0',
-      icon: <FaTwitter />,
+      icon: <FaXTwitter />,
     },
     {
       name: 'discord',
