@@ -54,20 +54,22 @@ export default function Home() {
       className={`flex min-h-screen flex-col items-center justify-center py-16 ${darkModeClasses}`}
     >
       <section className="w-full xl:w-10/12 max-w-7xl px-4">
-        <article className="flex flex-col lg:flex-row items-center lg:items-start justify-between gap-8 w-full">
-          <Image
-            src={'/LMD.png'}
-            alt="LMD professional"
-            width={700}
-            height={700}
-            priority
-            className={clsx(
-              'hidden lg:block absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 z-0',
-              'fadeIn'
-            )}
-          />
+        <article className="relative flex flex-col lg:flex-row items-center lg:items-start justify-between gap-8 w-full">
+          <div className="">
+            <Image
+              src={'/LMD.png'}
+              alt="LMD professional"
+              width={700}
+              height={700}
+              priority
+              className={clsx(
+                'hidden lg:block absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 z-0',
+                'fadeIn'
+              )}
+            />
+          </div>
 
-          <div className="flex flex-col gap-8 lg:gap-28 z-10 flex-1">
+          <div className="flex flex-col gap-8 lg:gap-16 z-10 flex-1">
             <div className="flex flex-col items-center lg:items-start text-section-1 contentDropBounce">
               <h3 className="mb-4 text-center lg:text-left text-2xl uppercase tracking-widest">
                 About me

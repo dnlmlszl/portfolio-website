@@ -18,7 +18,7 @@ export default function Navbar() {
     : 'bg-white text-slate-950';
 
   return (
-    <nav className={clsx('shadow py-4 px-8', darkModeClasses)}>
+    <nav className={clsx('shadow py-4 px-8 z-[50]', darkModeClasses)}>
       <div className={clsx('flex justify-between items-center')}>
         <div className="hidden md:flex gap-4">
           {['/', '/about', '/services', '/projects', '/contact'].map(
