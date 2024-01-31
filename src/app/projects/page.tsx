@@ -99,7 +99,7 @@ export default function Projects() {
         </div>
       </div>
 
-      <div className="flex justify-centerrounded-lg px-4 py-8">
+      <div className="flex justify-center rounded-lg px-4 py-8">
         <div className="grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 mx-auto gap-2 px-2 sm:px-4 md:px-12">
           {filteredItems.map((item: Items) => (
             <PortfolioItem

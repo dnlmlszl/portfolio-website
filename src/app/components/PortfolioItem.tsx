@@ -150,7 +150,7 @@ export default function PortfolioItem(props: PortfolioItemProps): JSX.Element {
             </div>
 
             {/* Small gallery */}
-            <div className="flex items-center justify-start gap-4">
+            <div className="flex items-center overflow-x-auto justify-start gap-4">
               {props.imageCollection.items.map((image, index) => (
                 <Image
                   key={index}
