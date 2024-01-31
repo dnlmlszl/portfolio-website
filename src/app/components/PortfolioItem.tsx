@@ -92,7 +92,7 @@ export default function PortfolioItem(props: PortfolioItemProps): JSX.Element {
               priority
               width={firstImage.width}
               height={firstImage.height}
-              className="absolute inset-0 w-full h-full object-cover rounded-md px-2 md:px-6 mt-2 md:mt-0"
+              className="absolute inset-0 w-full h-full object-cover object-left-top rounded-md px-2 md:px-6 mt-2 md:mt-0"
             />
           </div>
         )}
