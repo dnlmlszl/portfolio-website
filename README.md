@@ -29,7 +29,7 @@ To run this project locally, clone the repository and install dependencies:
 
 ```bash
 git clone [https://github.com/dnlmlszl/portfolio-website]
-cd [lmd-portfolio-app]
+cd [portfolio-website-main]
 npm install
 # or
 yarn install
@@ -44,19 +44,32 @@ yarn dev
 
 ## Project Structure
 
+```mdx
 about/: Contains about page components.
+
 api/: Contains api endpoints.
+
 components/: Reusable UI components.
+
 contact/: Contains contact page.
-graphql/: Contains grphql queries.
+
+graphql/: Contains the necessary graphql queries.
+
 lib/: Contains relevant setup files.
+
 projetcs/: Contains projects page.
+
 services/: Contains services page.
+
 public/: Static files like images, fonts, and the favicon.
+
 utils/: Utility functions and constants.
+
 store/: Contains context files for additional features such as dark mode.
+
 Contributions
 Contributions are always welcome! Please read the contribution guidelines first.
+```
 
 ## Contact
 
