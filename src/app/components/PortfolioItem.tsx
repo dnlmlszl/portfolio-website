@@ -3,8 +3,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { truncateWithFullWords } from '../utils/truncate-words';
-import { FaGithub, FaCode } from 'react-icons/fa';
+import { FaGithub, FaCode, FaTimes } from 'react-icons/fa';
 import clsx from 'clsx';
+import { useState } from 'react';
 
 interface ImageAsset {
   url: string;
@@ -32,6 +33,23 @@ interface PortfolioItemProps {
   web: string;
 }
 export default function PortfolioItem(props: PortfolioItemProps): JSX.Element {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(
+    props.imageCollection.items[0]
+  );
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const selectImage = (image: any) => {
+    setSelectedImage(image);
+  };
+
   const firstImage = props.imageCollection.items[0];
   return (
     <div className="relative p-0 md:p-2 mb-6">
@@ -61,8 +79,15 @@ export default function PortfolioItem(props: PortfolioItemProps): JSX.Element {
                 href={props.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 w-full bg-black text-white hover:bg-black/80 py-2 md:py-3 px-2 md:px-4 rounded font-medium tracking-widest shadow-md hover:shadow-xl transition duration-200 linear"
+                className={clsx(
+                  'flex items-center justify-center gap-2 w-full bg-black text-white hover:bg-black/80 py-2 md:py-3 px-2 md:px-4 font-medium tracking-widest shadow-md hover:shadow-xl transition duration-200 linear',
+                  'animatedButton'
+                )}
               >
+                <span> </span>
+                <span> </span>
+                <span> </span>
+                <span> </span>
                 <FaGithub size={25} />
                 <span className="text-sm lg:text-lg">GitHub</span>
               </Link>
@@ -72,7 +97,7 @@ export default function PortfolioItem(props: PortfolioItemProps): JSX.Element {
                 rel="noopener noreferrer"
                 className={clsx(
                   `${!props.web ? 'pointer-events-none' : ''}`,
-                  'flex items-center justify-center w-full gap-2  bg-orange-500 text-black hover:bg-orange-500/90 py-2 md:py-3 px-2 md:px-4 rounded font-medium tracking-widest shadow-md hover:shadow-xl transition duration-200 linear'
+                  'flex items-center justify-center w-full gap-2  bg-orange-500 text-black hover:bg-orange-500/90 py-2 md:py-3 px-2 md:px-4 font-medium tracking-widest shadow-md hover:shadow-xl transition duration-200 linear'
                 )}
               >
                 <FaCode size={25} />
@@ -85,7 +110,7 @@ export default function PortfolioItem(props: PortfolioItemProps): JSX.Element {
           {props.type}
         </div>
         {firstImage && (
-          <div className="relative w-full h-32 md:h-64">
+          <div className="relative w-full h-32 md:h-64" onClick={openModal}>
             <Image
               src={firstImage.url}
               alt={props.title}
@@ -97,6 +122,50 @@ export default function PortfolioItem(props: PortfolioItemProps): JSX.Element {
           </div>
         )}
       </div>
+      {isModalOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center p-4 z-[1000]">
+          <div className="bg-white/50 p-8 rounded-lg max-w-3xl w-full">
+            <button
+              onClick={closeModal}
+              className={clsx(
+                'relative inline-flex items-center justify-center p-2 rounded-full mb-4 tracking-widest',
+                'bg-red-500 hover:bg-red-600 focus:outline-none focus:ring focus:ring-red-300',
+                'transition duration-300 ease-in-out transform hover:scale-105'
+              )}
+            >
+              <span className="text-white font-medium text-lg">
+                <FaTimes />
+              </span>
+            </button>
+
+            {/* Main picture */}
+            <div className="mb-12">
+              <Image
+                src={selectedImage.url}
+                alt={selectedImage.title}
+                width={selectedImage.width}
+                height={selectedImage.height}
+                className="w-full object-cover object-left-top rounded-md"
+              />
+            </div>
+
+            {/* Small gallery */}
+            <div className="flex items-center justify-start gap-4">
+              {props.imageCollection.items.map((image, index) => (
+                <Image
+                  key={index}
+                  src={image.url}
+                  alt={image.title}
+                  width={image.width}
+                  height={image.height}
+                  className="w-auto h-24 mr-2 cursor-pointer object-cover object-left-top"
+                  onClick={() => selectImage(image)}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
