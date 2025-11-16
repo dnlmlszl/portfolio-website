@@ -35,7 +35,7 @@ export default function About() {
           <p className="text-md mt-2 mb-8 pt-0 max-w-[38rem]">
             Welcome to my website! Starting my career in{' '}
             <span className="text-orange-500 font-medium">economics</span>, I've
-            been immersed in the world of web development for over a years now.
+            been immersed in the world of web development for over 2 years now.
             My journey in coding and embracing new technologies is{' '}
             <span className="text-orange-500 font-medium">self-taught</span>
             ...

@@ -6,6 +6,13 @@ import { useContext } from 'react';
 import DarkThemeContext from '../store/ThemeContext';
 import ContactForm from '../components/ContactForm';
 import clsx from 'clsx';
+import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
+
+const RECAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+
+if (!RECAPTCHA_SITE_KEY) {
+  throw new Error('Missing reCAPTCHA Site key!');
+}
 
 export default function Contact() {
   const { isDarkTheme } = useContext(DarkThemeContext);
@@ -25,7 +32,9 @@ export default function Contact() {
         contact me
       </p>
       <section className="grid grid-cols-1 lg:grid-cols-2 items-center shadow-2xl bg-orange-500 mx-auto max-w-5xl w-full rounded-lg">
-        <ContactForm />
+        <GoogleReCaptchaProvider reCaptchaKey={RECAPTCHA_SITE_KEY!}>
+          <ContactForm />
+        </GoogleReCaptchaProvider>
         <div className="bg-orange-500 p-8 rounded-r-lg hidden lg:block">
           <Image
             src={'/contact.png'}

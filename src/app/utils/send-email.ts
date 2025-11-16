@@ -1,18 +1,22 @@
 import { FormData } from '../components/ContactForm';
 
-export function sendEmail(data: FormData) {
-  // TODO: send email
+export async function sendEmail(data: FormData): Promise<void> {
   const apiEndpoint = '/api/email';
 
-  fetch(apiEndpoint, {
+  const res = await fetch(apiEndpoint, {
     method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
     body: JSON.stringify(data),
-  })
-    .then((res) => res.json())
-    .then((response) => {
-      alert(response.message);
-    })
-    .catch((error) => {
-      alert(error);
-    });
+  });
+
+  const json = await res.json();
+
+  if (!res.ok) {
+    console.error('Server validation error:', json);
+    throw new Error(json.error || 'Email sending failed');
+  }
+
+  return json;
 }

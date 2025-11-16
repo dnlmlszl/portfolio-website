@@ -4,18 +4,28 @@ import { useForm } from 'react-hook-form';
 import { sendEmail } from '../utils/send-email';
 import { useRouter } from 'next/navigation';
 
+import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
+
 export type FormData = {
   name: string;
   email: string;
   message: string;
+  reCaptchaToken: string;
 };
 export default function ContactForm() {
   const { register, handleSubmit, reset } = useForm<FormData>();
   const router = useRouter();
+  const { executeRecaptcha } = useGoogleReCaptcha();
 
   async function onSubmit(data: FormData) {
+    if (!executeRecaptcha) {
+      console.error('The raCAPTCHA is not ready!');
+      return;
+    }
+
+    const reCaptchaToken = await executeRecaptcha('contact_form_submit');
     try {
-      await sendEmail(data);
+      await sendEmail({ ...data, reCaptchaToken });
       reset();
       router.push('/');
     } catch (error) {
@@ -80,6 +90,9 @@ export default function ContactForm() {
             {...register('message', { required: true })}
           ></textarea>
         </div>
+        <p className="text-xs text-slate-500 mb-4">
+          This website is protected by Google reCAPTCHA v3.
+        </p>
         <button
           type="submit"
           className="w-full py-2 bg-slate-800 text-orange-500 tracking-widest font-medium rounded-md hover:bg-slate-700 transition duration-300"
